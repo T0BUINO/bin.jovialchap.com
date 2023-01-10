@@ -5,6 +5,8 @@
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
     <link rel="shortcut icon" href="/" type="image/x-icon" />
     <title>
+        
+            (-) 配置 Content Security Policy |
          
         yeni&#39;s Bin
     </title>
@@ -41,7 +43,7 @@
         <div class="post-details">
             
             <div class="post-title">
-                <h1></h1>
+                <h1>(-) 配置 Content Security Policy</h1>
             </div>
             <div class="post-meta">
                 <i class="fa-solid fa-clock"></i>&nbsp;<span class="post-date">2023/01/10</span>
@@ -49,7 +51,7 @@
             
             <div class="post-content">
                 <p>该配置可以在一定程度上防止 XSS 攻击，在 Nginx 中可以直接通过添加 header 实现。</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Nginx"><span class="hljs-attribute">add_header</span> Content-Security-Policy <span class="hljs-string">&quot;default-src &#x27;self&#x27; *.jovialchap.com www.google-analytics.com www.googletagmanager.com *.w.org wp-themes.com secure.gravatar.com &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; blob: data: ;&quot;</span>;<br></code></pre></td></tr></table></figure>
+<pre><code class="hljs Nginx"><span class="hljs-attribute">add_header</span> Content-Security-Policy <span class="hljs-string">&quot;default-src &#x27;self&#x27; *.jovialchap.com www.google-analytics.com www.googletagmanager.com *.w.org wp-themes.com secure.gravatar.com &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; blob: data: ;&quot;</span>;</code></pre>
 
 <p>在其中</p>
 <ul>
