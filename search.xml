@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>配置 Content Security Policy</title>
-    <url>/2023/01/09/configure-csp/</url>
+    <url>/2023/01/10/configure-csp/</url>
     <content><![CDATA[<p>该配置可以在一定程度上防止 XSS 攻击，在 Nginx 中可以直接通过添加 header 实现。</p>
 <pre><code class="nginx">add_header Content-Security-Policy &quot;default-src &#39;self&#39; server_names *.jovialchap.com www.google-analytics.com www.googletagmanager.com *.w.org wp-themes.com secure.gravatar.com &#39;unsafe-inline&#39; &#39;unsafe-eval&#39; blob: data: ;&quot;;
 </code></pre>
@@ -20,7 +20,8 @@
 </ul>
 ]]></content>
       <tags>
-        <tag>nginx, 网站配置</tag>
+        <tag>nginx</tag>
+        <tag>网站配置</tag>
       </tags>
   </entry>
   <entry>
@@ -40,5 +41,9 @@
 <li><kbd>domains</kbd> 可以使用泛域名</li>
 </ul>
 ]]></content>
+      <tags>
+        <tag>nginx</tag>
+        <tag>网站配置</tag>
+      </tags>
   </entry>
 </search>
