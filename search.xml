@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Nginx referer 配置例子</title>
-    <url>/2023/01/10/nginx-referer-policy-example/</url>
-    <content><![CDATA[<p>网站需要配置防盗链，通过 Nginx 过滤非法的 referer</p>
-<pre><code class="nginx">location ~ .*\.(png|jpg|...)$ &#123;
-    valid_referers none blocked server_names [domains];
-    if ($invalid_referer) &#123;
-        return 403;
-    &#125;
-&#125;
-</code></pre>
-<p>一些说明：</p>
-<ul>
-<li><kbd>server_names</kbd> 代表当前 server 块中的所有 server_name</li>
-<li><kbd>domains</kbd> 可以使用泛域名</li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
     <title>配置 Content Security Policy</title>
     <url>/2023/01/09/configure-csp/</url>
     <content><![CDATA[<p>该配置可以在一定程度上防止 XSS 攻击，在 Nginx 中可以直接通过添加 header 实现。</p>
@@ -40,5 +22,23 @@
       <tags>
         <tag>nginx, 网站配置</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Nginx referer 配置例子</title>
+    <url>/2023/01/10/nginx-referer-policy-example/</url>
+    <content><![CDATA[<p>网站需要配置防盗链，通过 Nginx 过滤非法的 referer</p>
+<pre><code class="nginx">location ~ .*\.(png|jpg|...)$ &#123;
+    valid_referers none blocked server_names [domains];
+    if ($invalid_referer) &#123;
+        return 403;
+    &#125;
+&#125;
+</code></pre>
+<p>一些说明：</p>
+<ul>
+<li><kbd>server_names</kbd> 代表当前 server 块中的所有 server_name</li>
+<li><kbd>domains</kbd> 可以使用泛域名</li>
+</ul>
+]]></content>
   </entry>
 </search>
