@@ -1134,7 +1134,7 @@ article .flash-video > div iframe, article .flash-video > div object, article .f
 }
 
 article > footer {
-    padding-bottom: 2.5em;
+    /* padding-bottom: 2.5em; */
     margin-top: 2em
 }
 
@@ -2162,7 +2162,7 @@ body > footer p:last-child {
 /* 滚动槽 */
 ::-webkit-scrollbar {
     width: 6px;
-    height: 7px;
+    height: 6px;
 }
 ::-webkit-scrollbar-track {
     border-radius: 3px;
