@@ -6,7 +6,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
     <meta charset="UTF-8">
-    <title>About This Site</title>
+    <title>traceroute 应使用TCP或ICMP</title>
 
     <meta name="author" content="yeni">
 
@@ -16,7 +16,7 @@
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
 
-    <link rel="canonical" href="https://bin.jovialchap.com/about/">
+    <link rel="canonical" href="https://bin.jovialchap.com/2023/01/11/traceroute-tcp-or-icmp/">
 
     
 
@@ -88,19 +88,72 @@
 <div id="main">
     <div id="content">
         <div>
-<article id="page">
-  <h1>About This Site</h1>
-  <p><img src="https://g.jovialchap.com/avatar/9af1186e1c2a76a54a1eff017e2aa9c5?s=200&d=mm&r=g" alt="avatar"></p>
-<p>这里是一些随手记录的东西，方便我自己查阅（但目前没有做搜索功能）。<br>如果有机会将会整理成文章发布在博客上。</p>
+    <article class="hentry" role="article">
+        <header>
+            <h1 class="entry-title">traceroute 应使用TCP或ICMP</h1>
+            <p class="meta">
+                <time datetime="2023-01-11T01:35:06.000Z" data-updated="true">Wed Jan 11 2023</time>
+            </p>
+        </header>
+        <div class="entry-content">
+            <p>默认情况下 traceroute 命令发送 udp 包进行路由追踪。但是许多节点路由会丢弃 udp 包，所以参考价值不大，需要使用 tcp 或者 icmp 协议。</p>
+<pre><code class="bash">traceroute [ip/domain] -I[or -T]
+</code></pre>
+<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1642331">能ping通traceroute不通 - 腾讯云开发者社区-腾讯云</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/36811672">traceroute使用与实现原理分析 - 知乎</a></li>
+<li><a target="_blank" rel="noopener" href="https://wangchujiang.com/linux-command/c/traceroute.html">traceroute 命令，Linux traceroute 命令详解：显示数据包到主机间的路径 - Linux 命令搜索引擎</a></li>
+</ul>
 
-</article>
+        </div>
+        <footer>
+            <p class="meta">
+                <span class="byline author vcard">Posted by <span class="fn">yeni</span></span>
+                <time datetime="2023-01-11T01:35:06.000Z" data-updated="true">Wed Jan 11 2023</time>
+                
+    <span class="categories">
+    
+        <a class="category" href="/tags/traceroute/">traceroute</a>
+    
+    </span>
+
+            </p>
+            <div class="sharing">
+    
 </div>
+
+            <p class="meta">
+                
+
+                
+                <a class="basic-alignment right" href="/2023/01/10/nginx-referer-policy-example/" title="Previous Post: Nginx referer 配置例子">Nginx referer 配置例子 »</a>
+                
+            </p>
+
+            
+                <!-- Highlight.js -->
+                <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/highlight.min.js">
+                </script>
+                <script>
+                    hljs.initHighlightingOnLoad();
+                </script>
+
+            
+
+        </footer>
+    </article>
+
+    
+
+</div>
+
 <aside class="sidebar">
     <section class="odd">
     <h1>Recent Posts</h1>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2023/01/11/traceroute-tcp-or-icmp/">traceroute 应使用TCP或ICMP</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/01/10/nginx-referer-policy-example/">Nginx referer 配置例子</a></li><li class="post-list-item"><a class="post-list-link" href="/2023/01/10/configure-csp/">配置 Content Security Policy</a></li></ul>
 </section>
 </aside>
+
     </div>
 </div>
 
