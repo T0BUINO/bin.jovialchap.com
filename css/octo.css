@@ -690,7 +690,7 @@ body.sidebar-footer .toggle-sidebar {
 
     #content > div, #content > article {
         padding-top: 27.5px;
-        /* padding-bottom: 27.5px edited*/
+        /* padding-bottom: 27.5px edited */
     }
 
     aside.sidebar {
@@ -1869,7 +1869,7 @@ figure.code .highlight {
         display: inline-block;
         position: relative;
         top: -1px;
-        float: left
+        float: left;
     }
 
     #blog-archives h2:first-child {
