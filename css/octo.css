@@ -11,7 +11,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     padding-bottom: 2rem;
 }
 
-/* kbd 美化 */
+/* kbd 美化 edited */
 kbd {
     background-color: #e3e4ed;
     border-radius: 3px;
@@ -188,7 +188,7 @@ h6, section h5, section section h4, section section section h3 {
 }
 
 p, article blockquote, ul, ol {
-    margin-bottom: 0.7rem
+    margin-bottom: 0.7rem; /* edited */
 }
 
 ul {

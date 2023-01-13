@@ -96,7 +96,8 @@
             </p>
         </header>
         <div class="entry-content">
-            <p>默认情况下，Docker 不走主机的 UFW 或者 iptables，它自己就有一套 iptables，要使用主机上的配置，需要配置禁止 Docker 的网络通行。<br>编辑&#x2F;etc&#x2F;ufw&#x2F;after.rules 文件，在最后添加上这些规则：</p>
+            <p>默认情况下，Docker 不走主机的 UFW 或者 iptables，它自己就有一套 iptables，要使用主机上的配置，需要配置禁止 Docker 的网络通行。</p>
+<p>编辑&#x2F;etc&#x2F;ufw&#x2F;after.rules 文件，在最后添加上这些规则：</p>
 <pre><code class="yaml"># BEGIN UFW AND DOCKER
 *filter
 :ufw-user-forward - [0:0]
