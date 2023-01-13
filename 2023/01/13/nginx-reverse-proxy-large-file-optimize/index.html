@@ -6,7 +6,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
     <meta charset="UTF-8">
-    <title>traceroute 应使用 TCP 或 ICMP</title>
+    <title>Nginx 反代大文件传输优化</title>
 
     <meta name="author" content="yeni">
 
@@ -16,7 +16,7 @@
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=10">
 
-    <link rel="canonical" href="https://bin.jovialchap.com/2023/01/11/traceroute-tcp-or-icmp/">
+    <link rel="canonical" href="https://bin.jovialchap.com/2023/01/13/nginx-reverse-proxy-large-file-optimize/">
 
     
 
@@ -90,30 +90,40 @@
         <div>
     <article class="hentry" role="article">
         <header>
-            <h1 class="entry-title">traceroute 应使用 TCP 或 ICMP</h1>
+            <h1 class="entry-title">Nginx 反代大文件传输优化</h1>
             <p class="meta">
-                <time datetime="2023-01-11T01:35:06.000Z" data-updated="true">Wed Jan 11 2023</time>
+                <time datetime="2023-01-13T04:04:49.000Z" data-updated="true">Fri Jan 13 2023</time>
             </p>
         </header>
         <div class="entry-content">
-            <p>默认情况下 traceroute 命令发送 udp 包进行路由追踪。但是许多节点路由会丢弃 udp 包，所以参考价值不大，需要使用 tcp 或者 icmp 协议。</p>
-<pre><code class="bash">traceroute [ip/domain] -I[or -T]
+            <p>Nginx 反代的时候，遇到了上传大文件时，即使页面显示完成，但是仍要等待很久。这是因为反代服务器先要进行整个文件的缓存，接收完成之后再传送到源服务器。</p>
+<pre><code class="plain">大文件 -&gt; 反代服务器缓存 -&gt; 源站
+</code></pre>
+<p>在 Nginx 反代配置中加上一行：</p>
+<pre><code class="nginx">proxy_request_buffering off;
+</code></pre>
+<p>另外就是在下载的时候，也需要优化。最近，我在尝试反代 WebDAV 串流视频，发现反代服务器一直从源站缓存视频文件，显然这不好，因为反代服务器的硬盘一般不是特别大。所以也需要对配置文件进行优化：</p>
+<pre><code class="nginx">proxy_buffering on;
+proxy_buffer_size 4k; 
+proxy_buffers 8 1M;
+proxy_busy_buffers_size 2M;
+proxy_max_temp_file_size 0;
+proxy_request_buffering off;
 </code></pre>
 <h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1642331">能ping通traceroute不通 - 腾讯云开发者社区-腾讯云</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/36811672">traceroute使用与实现原理分析 - 知乎</a></li>
-<li><a target="_blank" rel="noopener" href="https://wangchujiang.com/linux-command/c/traceroute.html">traceroute 命令，Linux traceroute 命令详解：显示数据包到主机间的路径 - Linux 命令搜索引擎</a></li>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/68710670/nginx-reverse-proxy-stalls-on-large-files">Nginx reverse proxy stalls on large files - Stack Overflow</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiewenming/p/8023090.html">Nginx反向代理缓冲区优化 - warren1236 - 博客园</a></li>
 </ul>
 
         </div>
         <footer>
             <p class="meta">
                 <span class="byline author vcard">Posted by <span class="fn">yeni</span></span>
-                <time datetime="2023-01-11T01:35:06.000Z" data-updated="true">Wed Jan 11 2023</time>
+                <time datetime="2023-01-13T04:04:49.000Z" data-updated="true">Fri Jan 13 2023</time>
                 
     <span class="categories">
     
-        <a class="category" href="/tags/traceroute/">traceroute</a>
+        <a class="category" href="/tags/Nginx/">Nginx</a>
     
     </span>
 
@@ -124,11 +134,9 @@
 
             <p class="meta">
                 
-                <a class="basic-alignment left" href="/2023/01/12/host-ufw-not-working-for-docker/" title="Previous Post: 主机 UFW 对 Docker 不生效">« 主机 UFW 对 Docker 不生效</a>
-                
 
                 
-                <a class="basic-alignment right" href="/2023/01/10/nginx-referer-policy-example/" title="Previous Post: Nginx referer 配置例子">Nginx referer 配置例子 »</a>
+                <a class="basic-alignment right" href="/2023/01/12/host-ufw-not-working-for-docker/" title="Previous Post: 主机 UFW 对 Docker 不生效">主机 UFW 对 Docker 不生效 »</a>
                 
             </p>
 
