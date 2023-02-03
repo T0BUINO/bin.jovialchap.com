@@ -98,7 +98,11 @@
         </header>
         <div class="entry-content">
             <p>使用 SecureCRT 时，会出现一段时间不操作，SSH 连接自动断开的问题。进行下面的设置即可：</p>
-<pre><code>Options ==&gt; Session Options ==&gt; Terminal ==&gt; [√] Send protocol NO-OP
+<pre><code class="plaintext">Options
+    ==&gt; Session Options
+        ==&gt; Terminal
+            ==&gt; Anti-idle
+                [√] Send protocol NO-OP (勾选这一个功能)
 </code></pre>
 
         </div>
