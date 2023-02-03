@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bin.jovialchap.com/2023/02/03/securecrt-keep-alive-session/</loc>
+    
+    <lastmod>2023-02-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bin.jovialchap.com/2023/01/31/set-up-ssh-keys-on-ubuntu/</loc>
     
     <lastmod>2023-01-31</lastmod>
@@ -76,7 +85,7 @@
 
   <url>
     <loc>https://bin.jovialchap.com/</loc>
-    <lastmod>2023-01-31</lastmod>
+    <lastmod>2023-02-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -84,63 +93,70 @@
   
   <url>
     <loc>https://bin.jovialchap.com/tags/nginx/</loc>
-    <lastmod>2023-01-31</lastmod>
+    <lastmod>2023-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://bin.jovialchap.com/tags/%E7%BD%91%E7%AB%99%E9%85%8D%E7%BD%AE/</loc>
-    <lastmod>2023-01-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bin.jovialchap.com/tags/proxmox/</loc>
-    <lastmod>2023-01-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bin.jovialchap.com/tags/pve/</loc>
-    <lastmod>2023-01-31</lastmod>
+    <lastmod>2023-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://bin.jovialchap.com/tags/UFW/</loc>
-    <lastmod>2023-01-31</lastmod>
+    <lastmod>2023-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://bin.jovialchap.com/tags/Docker/</loc>
-    <lastmod>2023-01-31</lastmod>
+    <lastmod>2023-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bin.jovialchap.com/tags/proxmox/</loc>
+    <lastmod>2023-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bin.jovialchap.com/tags/pve/</loc>
+    <lastmod>2023-02-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bin.jovialchap.com/tags/securecrt/</loc>
+    <lastmod>2023-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://bin.jovialchap.com/tags/ubuntu/</loc>
-    <lastmod>2023-01-31</lastmod>
+    <lastmod>2023-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://bin.jovialchap.com/tags/ssh/</loc>
-    <lastmod>2023-01-31</lastmod>
+    <lastmod>2023-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://bin.jovialchap.com/tags/traceroute/</loc>
-    <lastmod>2023-01-31</lastmod>
+    <lastmod>2023-02-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>

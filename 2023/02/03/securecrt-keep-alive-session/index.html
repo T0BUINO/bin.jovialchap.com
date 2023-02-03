@@ -6,7 +6,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
     <meta charset="UTF-8">
-    <title>主机 UFW 对 Docker 不生效</title>
+    <title>SecureCRT 防止 SSH 连接自动断开</title>
 
     <meta name="author" content="yeni">
 
@@ -16,7 +16,7 @@
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=10">
 
-    <link rel="canonical" href="https://bin.jovialchap.com/2023/01/12/host-ufw-not-working-for-docker/">
+    <link rel="canonical" href="https://bin.jovialchap.com/2023/02/03/securecrt-keep-alive-session/">
 
     
 
@@ -91,54 +91,25 @@
         <div>
     <article class="hentry" role="article">
         <header>
-            <h1 class="entry-title">主机 UFW 对 Docker 不生效</h1>
+            <h1 class="entry-title">SecureCRT 防止 SSH 连接自动断开</h1>
             <p class="meta">
-                <time datetime="2023-01-12T07:56:37.000Z" data-updated="true">Thu Jan 12 2023</time>
+                <time datetime="2023-02-03T14:14:45.000Z" data-updated="true">Fri Feb 03 2023</time>
             </p>
         </header>
         <div class="entry-content">
-            <p>默认情况下，Docker 不走主机的 UFW 或者 iptables，它自己就有一套 iptables，要使用主机上的配置，需要配置禁止 Docker 的网络通行。</p>
-<p>编辑&#x2F;etc&#x2F;ufw&#x2F;after.rules 文件，在最后添加上这些规则：</p>
-<pre><code class="yaml"># BEGIN UFW AND DOCKER
-*filter
-:ufw-user-forward - [0:0]
-:DOCKER-USER - [0:0]
--A DOCKER-USER -j RETURN -s 10.0.0.0/8
--A DOCKER-USER -j RETURN -s 172.16.0.0/12
--A DOCKER-USER -j RETURN -s 192.168.0.0/16
-
--A DOCKER-USER -j ufw-user-forward
-
--A DOCKER-USER -j DROP -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -d 192.168.0.0/16
--A DOCKER-USER -j DROP -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -d 10.0.0.0/8
--A DOCKER-USER -j DROP -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -d 172.16.0.0/12
--A DOCKER-USER -j DROP -p udp -m udp --dport 0:32767 -d 192.168.0.0/16
--A DOCKER-USER -j DROP -p udp -m udp --dport 0:32767 -d 10.0.0.0/8
--A DOCKER-USER -j DROP -p udp -m udp --dport 0:32767 -d 172.16.0.0/12
-
--A DOCKER-USER -j RETURN
-COMMIT
-# END UFW AND DOCKER
+            <p>使用 SecureCRT 时，会出现一段时间不操作，SSH 连接自动断开的问题。进行下面的设置即可：</p>
+<pre><code>Options ==&gt; Session Options ==&gt; Terminal ==&gt; [√] Send protocol NO-OP
 </code></pre>
-<p>之后重启 UFW 即可，如果需要放行 Docker 的端口，使用下面的命令：</p>
-<pre><code class="bash">ufw route allow proto tcp from any to any port 80
-#允许 80 端口
-</code></pre>
-<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://chaifeng.com/to-fix-ufw-and-docker-security-flaw-without-disabling-iptables/">不用禁用 iptables 来解决 UFW 和 Docker 的安全问题 | 三分热度:&#x2F;&#x2F;柴锋</a></li>
-</ul>
 
         </div>
         <footer>
             <p class="meta">
                 <span class="byline author vcard">Posted by <span class="fn">yeni</span></span>
-                <time datetime="2023-01-12T07:56:37.000Z" data-updated="true">Thu Jan 12 2023</time>
+                <time datetime="2023-02-03T14:14:45.000Z" data-updated="true">Fri Feb 03 2023</time>
                 
     <span class="categories">
     
-        <a class="category" href="/tags/UFW/">UFW</a>,
-    
-        <a class="category" href="/tags/Docker/">Docker</a>
+        <a class="category" href="/tags/securecrt/">securecrt</a>
     
     </span>
 
@@ -149,11 +120,9 @@ COMMIT
 
             <p class="meta">
                 
-                <a class="basic-alignment left" href="/2023/01/13/nginx-reverse-proxy-large-file-optimize/" title="Previous Post: Nginx 反代大文件传输优化">« Nginx 反代大文件传输优化</a>
-                
 
                 
-                <a class="basic-alignment right" href="/2023/01/11/traceroute-tcp-or-icmp/" title="Previous Post: traceroute 应使用 TCP 或 ICMP">traceroute 应使用 TCP 或 ICMP »</a>
+                <a class="basic-alignment right" href="/2023/01/31/set-up-ssh-keys-on-ubuntu/" title="Previous Post: 在 Ubuntu 20.04 上设置 SSH 密钥登陆">在 Ubuntu 20.04 上设置 SSH 密钥登陆 »</a>
                 
             </p>
 
