@@ -6,7 +6,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
     <meta charset="UTF-8">
-    <title>在 Ubuntu 20.04 上设置 SSH 密钥登陆</title>
+    <title>Nginx 反代修改 Gravatar 默认头像</title>
 
     <meta name="author" content="yeni">
 
@@ -16,7 +16,7 @@
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=10">
 
-    <link rel="canonical" href="https://bin.jovialchap.com/2023/01/31/set-up-ssh-keys-on-ubuntu/">
+    <link rel="canonical" href="https://bin.jovialchap.com/2023/02/04/nginx-proxy-change-default-gravatar/">
 
     
 
@@ -91,46 +91,33 @@
         <div>
     <article class="hentry" role="article">
         <header>
-            <h1 class="entry-title">在 Ubuntu 20.04 上设置 SSH 密钥登陆</h1>
+            <h1 class="entry-title">Nginx 反代修改 Gravatar 默认头像</h1>
             <p class="meta">
-                <time datetime="2023-01-31T07:25:04.000Z" data-updated="true">Tue Jan 31 2023</time>
+                <time datetime="2023-02-04T05:08:58.000Z" data-updated="true">Sat Feb 04 2023</time>
             </p>
         </header>
         <div class="entry-content">
-            <p>为了防止外人对服务器进行密码爆破，建议使用 SSH 密钥加固服务器。需要提前准备好 一对 SSH 公钥、私钥。</p>
-<p>我已经使用 PuTTYgen 生成好了所需的 SSH 密钥，接下来登陆服务器，进入当前用户 HOME 文件夹，并新建一个 <kbd>.ssh</kbd> 目录：</p>
-<pre><code class="bash">cd ~
-mkdir .ssh
+            <p>在做 Gravatar 反向代理的时候，遇到需求：修改默认的 avatar</p>
+<p>具体的效果可以参考 <a target="_blank" rel="noopener" href="https://cravatar.cn/avatar">https://cravatar.cn/avatar</a></p>
+<p>直接介绍 Nginx 配置写法：</p>
+<pre><code class="nginx">location = /avatar/ &#123;
+    root /data/wwwroot/test;
+    try_files /test.jpg =403;
+&#125;
 </code></pre>
-<p>然后使用命令新建、编辑一个 <kbd>authorized_keys</kbd> 文件：</p>
-<pre><code class="bash">nano authorized_keys
-</code></pre>
-<p>然后将”公钥”粘贴进去，保存。然后编辑 <kbd>sshd</kbd> 配置文件：</p>
-<pre><code class="bash">nano /etc/ssh/sshd_config
-</code></pre>
-<p>然后插入下面两行，或者将这两行前方的注释符号去掉：</p>
-<pre><code class="yaml">RSAAuthentication yes
-PubkeyAuthentication yes
-</code></pre>
-<p>然后重启 <kbd>sshd</kbd> 服务之后测试使用 SSH 密钥登陆，如果没有问题，在 sshd 配置文件中再添加一行：</p>
-<pre><code class="yaml">PasswordAuthentication no #禁止密码登陆
-</code></pre>
-<p>最后保存，重启 sshd 服务即可。</p>
-<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.helloworld.net/p/4529276617">ubuntu设置 SSH 通过密钥登录 - HelloWorld开发者社区</a></li>
-</ul>
+<p>需要在反代的服务器上新建一个 <kbd>/data/wwwroot/test</kbd> 文件夹，然后上传一个 <kbd>test.jpg</kbd> 文件即可，当然目录和文件名都可以自行修改。</p>
 
         </div>
         <footer>
             <p class="meta">
                 <span class="byline author vcard">Posted by <span class="fn">yeni</span></span>
-                <time datetime="2023-01-31T07:25:04.000Z" data-updated="true">Tue Jan 31 2023</time>
+                <time datetime="2023-02-04T05:08:58.000Z" data-updated="true">Sat Feb 04 2023</time>
                 
     <span class="categories">
     
-        <a class="category" href="/tags/ubuntu/">ubuntu</a>,
+        <a class="category" href="/tags/nginx/">nginx</a>,
     
-        <a class="category" href="/tags/ssh/">ssh</a>
+        <a class="category" href="/tags/gravatar/">gravatar</a>
     
     </span>
 
@@ -141,11 +128,9 @@ PubkeyAuthentication yes
 
             <p class="meta">
                 
-                <a class="basic-alignment left" href="/2023/02/03/securecrt-keep-alive-session/" title="Previous Post: SecureCRT 防止 SSH 连接自动断开">« SecureCRT 防止 SSH 连接自动断开</a>
-                
 
                 
-                <a class="basic-alignment right" href="/2023/01/28/install-pve-on-debian-11/" title="Previous Post: 在 Debian 11 上安装 Proxmox">在 Debian 11 上安装 Proxmox »</a>
+                <a class="basic-alignment right" href="/2023/02/03/securecrt-keep-alive-session/" title="Previous Post: SecureCRT 防止 SSH 连接自动断开">SecureCRT 防止 SSH 连接自动断开 »</a>
                 
             </p>
 
