@@ -6,7 +6,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
     <meta charset="UTF-8">
-    <title>SecureCRT 防止 SSH 连接自动断开</title>
+    <title>Ubuntu 关闭 needrestart 输出</title>
 
     <meta name="author" content="yeni">
 
@@ -16,7 +16,7 @@
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=10">
 
-    <link rel="canonical" href="https://bin.jovialchap.com/2023/02/03/securecrt-keep-alive-session/">
+    <link rel="canonical" href="https://bin.jovialchap.com/2023/02/06/ubuntu-disable-needrestart/">
 
     
 
@@ -91,29 +91,40 @@
         <div>
     <article class="hentry" role="article">
         <header>
-            <h1 class="entry-title">SecureCRT 防止 SSH 连接自动断开</h1>
+            <h1 class="entry-title">Ubuntu 关闭 needrestart 输出</h1>
             <p class="meta">
-                <time datetime="2023-02-03T14:14:45.000Z" data-updated="true">Fri Feb 03 2023</time>
+                <time datetime="2023-02-06T14:07:03.000Z" data-updated="true">Mon Feb 06 2023</time>
             </p>
         </header>
         <div class="entry-content">
-            <p>使用 SecureCRT 时，会出现一段时间不操作，SSH 连接自动断开的问题。进行下面的设置即可：</p>
-<pre><code class="plaintext">Options
-    ==&gt; Session Options
-        ==&gt; Terminal
-            ==&gt; Anti-idle
-                [√] Send protocol NO-OP (勾选这一个功能)
+            <p>在一些 VPS 的 Ubuntu 模板中，运行 <kbd>apt upgrade</kbd> 的时候，会出现下面这些输出：</p>
+<pre><code class="plaintext">No containers need to be restarted.
+No user sessions are running outdated binaries.
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
 </code></pre>
+<p>虽然无伤大雅，但有些碍眼，关闭的方法很简单：</p>
+<pre><code class="bash">#方法1
+touch /etc/needrestart/conf.d/disable.conf
+nano disable.conf
+    #输入
+    $nrconf&#123;ucodehints&#125; = 0;
+---
+#方法2
+apt purge needrestart -y
+</code></pre>
+<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://askubuntu.com/questions/1410699/apt-upgrade-on-aarch64-reports-no-vm-guests-are-running-outdated-hypervisor">virtualization - “apt upgrade” on aarch64 reports “No VM guests are running outdated hypervisor (qemu) binaries on this host” - Ask Ubuntu</a></li>
+</ul>
 
         </div>
         <footer>
             <p class="meta">
                 <span class="byline author vcard">Posted by <span class="fn">yeni</span></span>
-                <time datetime="2023-02-03T14:14:45.000Z" data-updated="true">Fri Feb 03 2023</time>
+                <time datetime="2023-02-06T14:07:03.000Z" data-updated="true">Mon Feb 06 2023</time>
                 
     <span class="categories">
     
-        <a class="category" href="/tags/securecrt/">securecrt</a>
+        <a class="category" href="/tags/ubuntu/">ubuntu</a>
     
     </span>
 
@@ -124,11 +135,11 @@
 
             <p class="meta">
                 
-                <a class="basic-alignment left" href="/2023/02/04/nginx-proxy-change-default-gravatar/" title="Previous Post: Nginx 反代修改 Gravatar 默认头像">« Nginx 反代修改 Gravatar 默认头像</a>
+                <a class="basic-alignment left" href="/2023/02/06/fix-502-error-in-nginx-proxy-for-cloudflare/" title="Previous Post: 修复 Nginx 反代 Cloudflare 网站 502 错误">« 修复 Nginx 反代 Cloudflare 网站 502 错误</a>
                 
 
                 
-                <a class="basic-alignment right" href="/2023/01/31/set-up-ssh-keys-on-ubuntu/" title="Previous Post: 在 Ubuntu 20.04 上设置 SSH 密钥登陆">在 Ubuntu 20.04 上设置 SSH 密钥登陆 »</a>
+                <a class="basic-alignment right" href="/2023/02/04/nginx-proxy-change-default-gravatar/" title="Previous Post: Nginx 反代修改 Gravatar 默认头像">Nginx 反代修改 Gravatar 默认头像 »</a>
                 
             </p>
 

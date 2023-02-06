@@ -6,7 +6,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
     <meta charset="UTF-8">
-    <title>SecureCRT 防止 SSH 连接自动断开</title>
+    <title>修复 Nginx 反代 Cloudflare 网站 502 错误</title>
 
     <meta name="author" content="yeni">
 
@@ -16,7 +16,7 @@
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=10">
 
-    <link rel="canonical" href="https://bin.jovialchap.com/2023/02/03/securecrt-keep-alive-session/">
+    <link rel="canonical" href="https://bin.jovialchap.com/2023/02/06/fix-502-error-in-nginx-proxy-for-cloudflare/">
 
     
 
@@ -91,29 +91,36 @@
         <div>
     <article class="hentry" role="article">
         <header>
-            <h1 class="entry-title">SecureCRT 防止 SSH 连接自动断开</h1>
+            <h1 class="entry-title">修复 Nginx 反代 Cloudflare 网站 502 错误</h1>
             <p class="meta">
-                <time datetime="2023-02-03T14:14:45.000Z" data-updated="true">Fri Feb 03 2023</time>
+                <time datetime="2023-02-06T14:17:52.000Z" data-updated="true">Mon Feb 06 2023</time>
             </p>
         </header>
         <div class="entry-content">
-            <p>使用 SecureCRT 时，会出现一段时间不操作，SSH 连接自动断开的问题。进行下面的设置即可：</p>
-<pre><code class="plaintext">Options
-    ==&gt; Session Options
-        ==&gt; Terminal
-            ==&gt; Anti-idle
-                [√] Send protocol NO-OP (勾选这一个功能)
+            <p>Nginx 在反代套用了 Cloudflare CDN 的网站时，会出现 502 错误。修复这一个错误只需要在 Nginx 配置中加上这两行：</p>
+<pre><code class="nginx">location /
+&#123;
+    proxy_pass ...;
+    ...
+    proxy_ssl_server_name on;
+    proxy_ssl_name [被反向代理域名];
+&#125;
 </code></pre>
+<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/plfx1314/article/details/121861876">解决宝塔面板Nginx反向代理Cloudflare出现502或403错误_Celestinexy的博客-CSDN博客_cloudflare 502</a></li>
+</ul>
 
         </div>
         <footer>
             <p class="meta">
                 <span class="byline author vcard">Posted by <span class="fn">yeni</span></span>
-                <time datetime="2023-02-03T14:14:45.000Z" data-updated="true">Fri Feb 03 2023</time>
+                <time datetime="2023-02-06T14:17:52.000Z" data-updated="true">Mon Feb 06 2023</time>
                 
     <span class="categories">
     
-        <a class="category" href="/tags/securecrt/">securecrt</a>
+        <a class="category" href="/tags/nginx/">nginx</a>,
+    
+        <a class="category" href="/tags/cloudflare/">cloudflare</a>
     
     </span>
 
@@ -124,11 +131,11 @@
 
             <p class="meta">
                 
-                <a class="basic-alignment left" href="/2023/02/04/nginx-proxy-change-default-gravatar/" title="Previous Post: Nginx 反代修改 Gravatar 默认头像">« Nginx 反代修改 Gravatar 默认头像</a>
+                <a class="basic-alignment left" href="/2023/02/06/set-cpu-performance-mode-on-dedicated-server/" title="Previous Post: 独立服务器设置 CPU 为性能模式">« 独立服务器设置 CPU 为性能模式</a>
                 
 
                 
-                <a class="basic-alignment right" href="/2023/01/31/set-up-ssh-keys-on-ubuntu/" title="Previous Post: 在 Ubuntu 20.04 上设置 SSH 密钥登陆">在 Ubuntu 20.04 上设置 SSH 密钥登陆 »</a>
+                <a class="basic-alignment right" href="/2023/02/06/ubuntu-disable-needrestart/" title="Previous Post: Ubuntu 关闭 needrestart 输出">Ubuntu 关闭 needrestart 输出 »</a>
                 
             </p>
 
