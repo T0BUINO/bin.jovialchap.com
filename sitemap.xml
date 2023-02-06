@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://bin.jovialchap.com/2023/02/06/fix-502-error-in-nginx-proxy-for-cloudflare/</loc>
+    
+    <lastmod>2023-02-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://bin.jovialchap.com/2023/02/04/nginx-proxy-change-default-gravatar/</loc>
     
     <lastmod>2023-02-06</lastmod>
@@ -12,15 +21,6 @@
   
   <url>
     <loc>https://bin.jovialchap.com/2023/02/06/set-cpu-performance-mode-on-dedicated-server/</loc>
-    
-    <lastmod>2023-02-06</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://bin.jovialchap.com/2023/02/06/fix-502-error-in-nginx-proxy-for-cloudflare/</loc>
     
     <lastmod>2023-02-06</lastmod>
     
@@ -142,6 +142,13 @@
   </url>
   
   <url>
+    <loc>https://bin.jovialchap.com/tags/cloudflare/</loc>
+    <lastmod>2023-02-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://bin.jovialchap.com/tags/UFW/</loc>
     <lastmod>2023-02-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -150,13 +157,6 @@
   
   <url>
     <loc>https://bin.jovialchap.com/tags/Docker/</loc>
-    <lastmod>2023-02-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bin.jovialchap.com/tags/cloudflare/</loc>
     <lastmod>2023-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
