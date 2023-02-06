@@ -98,8 +98,7 @@
         </header>
         <div class="entry-content">
             <p>在做 Gravatar 反向代理的时候，遇到需求：修改默认的 avatar</p>
-<p>具体的效果可以参考 <a target="_blank" rel="noopener" href="https://cravatar.cn/avatar">https://cravatar.cn/avatar</a></p>
-<p>直接介绍 Nginx 配置写法：</p>
+<p>具体的效果可以参考 <a target="_blank" rel="noopener" href="https://cravatar.cn/avatar">https://cravatar.cn/avatar</a>，直接介绍 Nginx 配置写法：</p>
 <pre><code class="nginx">location = /avatar/ &#123;
     root /data/wwwroot/test;
     try_files /test.jpg =403;
