@@ -6,7 +6,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
     <meta charset="UTF-8">
-    <title>Nginx 反代修改 Gravatar 默认头像</title>
+    <title>Rclone 自启动模板</title>
 
     <meta name="author" content="yeni">
 
@@ -16,7 +16,7 @@
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=10">
 
-    <link rel="canonical" href="https://bin.jovialchap.com/2023/02/04/nginx-proxy-change-default-gravatar/">
+    <link rel="canonical" href="https://bin.jovialchap.com/2023/11/23/rclone-service-template/">
 
     
 
@@ -91,33 +91,57 @@
         <div>
     <article class="hentry" role="article">
         <header>
-            <h1 class="entry-title">Nginx 反代修改 Gravatar 默认头像</h1>
+            <h1 class="entry-title">Rclone 自启动模板</h1>
             <p class="meta">
-                <time datetime="2023-02-04T05:08:58.000Z" data-updated="true">Sat Feb 04 2023</time>
+                <time datetime="2023-11-23T05:16:54.000Z" data-updated="true">Thu Nov 23 2023</time>
             </p>
         </header>
         <div class="entry-content">
-            <p>在做 Gravatar 反向代理的时候，遇到需求：修改默认的 avatar</p>
-<p>具体的效果可以参考 <a target="_blank" rel="noopener" href="https://cravatar.cn/avatar">https://cravatar.cn/avatar</a>，直接介绍 Nginx 配置写法：</p>
-<pre><code class="nginx">location = /avatar/ &#123;
-    root /data/wwwroot/test;
-    try_files /test.jpg =403;
-&#125;
+            <p>Rclone 常常需要开机自动挂载，一般采用 systemd 服务模式启动，采用的模板如下</p>
+<pre><code>[Unit]
+Description=Rclone for [your-project]
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/rclone mount [your-remote]:[remote-folder(can be empty for root folder)] [your-local-folder] \
+--allow-non-empty \
+--allow-other \
+--attr-timeout 5m \
+--transfers 2 \
+--buffer-size 32M \
+--low-level-retries 200 \
+--vfs-read-chunk-size 32M \
+--vfs-read-chunk-size-limit 128M \
+--vfs-cache-mode full \
+--vfs-cache-max-age 24h \
+--vfs-cache-max-size 10G \
+--tpslimit 4 \
+--checkers 4
+Restart=on-failure
+RestartSec=15
+
+ExecStop=/usr/bin/fusermount -u [your-local-folder]
+
+[Install]
+WantedBy=default.target
 </code></pre>
-<p>需要在反代的服务器上新建一个 <kbd>/data/wwwroot/test</kbd> 文件夹，然后上传一个 <kbd>test.jpg</kbd> 文件即可，当然目录和文件名都可以自行修改。</p>
-<p><strong>目前已知缺点：只能在访问 &#x2F;avatar&#x2F; 时修改，如果访问的是非有效 HASH，不会返回修改过后的自定义头像。</strong></p>
+<h2 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://serverfault.com/questions/590696/forcefully-unmounting-filesystem">linux - Forcefully Unmounting Filesystem - Server Fault</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rclone/rclone/wiki/Systemd-rclone-mount">Systemd rclone mount · rclone&#x2F;rclone Wiki · GitHub</a></li>
+<li><a target="_blank" rel="noopener" href="https://hackmd.io/@jerry12122/BksF7APAO">Rclone Systemd - HackMD</a></li>
+</ul>
 
         </div>
         <footer>
             <p class="meta">
                 <span class="byline author vcard">Posted by <span class="fn">yeni</span></span>
-                <time datetime="2023-02-04T05:08:58.000Z" data-updated="true">Sat Feb 04 2023</time>
+                <time datetime="2023-11-23T05:16:54.000Z" data-updated="true">Thu Nov 23 2023</time>
                 
     <span class="categories">
     
-        <a class="category" href="/tags/nginx/">nginx</a>,
+        <a class="category" href="/tags/linux/">linux</a>,
     
-        <a class="category" href="/tags/gravatar/">gravatar</a>
+        <a class="category" href="/tags/Rclone/">Rclone</a>
     
     </span>
 
@@ -128,11 +152,9 @@
 
             <p class="meta">
                 
-                <a class="basic-alignment left" href="/2023/02/06/ubuntu-disable-needrestart/" title="Previous Post: Ubuntu 关闭 needrestart 输出">« Ubuntu 关闭 needrestart 输出</a>
-                
 
                 
-                <a class="basic-alignment right" href="/2023/02/03/securecrt-keep-alive-session/" title="Previous Post: SecureCRT 防止 SSH 连接自动断开">SecureCRT 防止 SSH 连接自动断开 »</a>
+                <a class="basic-alignment right" href="/2023/02/06/set-cpu-performance-mode-on-dedicated-server/" title="Previous Post: 独立服务器设置 CPU 为性能模式">独立服务器设置 CPU 为性能模式 »</a>
                 
             </p>
 
