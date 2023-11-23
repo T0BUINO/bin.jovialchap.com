@@ -151,20 +151,6 @@
   </url>
   
   <url>
-    <loc>https://bin.jovialchap.com/tags/UFW/</loc>
-    <lastmod>2023-11-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bin.jovialchap.com/tags/Docker/</loc>
-    <lastmod>2023-11-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://bin.jovialchap.com/tags/cloudflare/</loc>
     <lastmod>2023-11-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -180,6 +166,20 @@
   
   <url>
     <loc>https://bin.jovialchap.com/tags/pve/</loc>
+    <lastmod>2023-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bin.jovialchap.com/tags/UFW/</loc>
+    <lastmod>2023-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://bin.jovialchap.com/tags/Docker/</loc>
     <lastmod>2023-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -221,6 +221,13 @@
   </url>
   
   <url>
+    <loc>https://bin.jovialchap.com/tags/traceroute/</loc>
+    <lastmod>2023-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://bin.jovialchap.com/tags/ubuntu/</loc>
     <lastmod>2023-11-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -229,13 +236,6 @@
   
   <url>
     <loc>https://bin.jovialchap.com/tags/ssh/</loc>
-    <lastmod>2023-11-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://bin.jovialchap.com/tags/traceroute/</loc>
     <lastmod>2023-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
